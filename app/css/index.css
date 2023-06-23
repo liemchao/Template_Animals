@@ -1,0 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  @layer font-Barlow;
+}
+
+.card-active .skill-lever {
+  @apply scale-[1.3] delay-700 decoration-neutral-300;
+}
+
+.card-active {
+  @apply h-96;
+}
