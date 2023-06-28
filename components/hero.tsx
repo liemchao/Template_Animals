@@ -36,10 +36,32 @@ export default function Hero() {
     setSlider(sliderRef.current);
   }, []);
 
-  const toggleMenu = () => setShowMenu(!showMenu);
   const [showMenu, setShowMenu] = useState(false);
   const [slider, setSlider] = useState<SliderRef | null>(null);
   const sliderRef = useRef<SliderRef | null>(null);
+  const menuRef = useRef<HTMLDivElement>(null);
+
+  const toggleMenu = () => {
+    setShowMenu(!showMenu);
+  };
+
+  useEffect(() => {
+    const handleOutsideClick = (event: any) => {
+      if (menuRef.current && !menuRef.current.contains(event.target)) {
+        setShowMenu(false);
+      }
+    };
+
+    if (showMenu) {
+      window.addEventListener("mousedown", handleOutsideClick);
+    } else {
+      window.removeEventListener("mousedown", handleOutsideClick);
+    }
+
+    return () => {
+      window.removeEventListener("mousedown", handleOutsideClick);
+    };
+  }, [showMenu]);
 
   const handlePrev = () => {
     if (slider) {
@@ -223,33 +245,28 @@ export default function Hero() {
                           <path d="M8.59 13.41L10 15l6-6-6-6-1.41 1.41L12.17 9H3v2h9.17l-3.58 3.58z" />
                         </svg>
                       </button>
-                      {showMenu && (
+                      {/* {showMenu && (
                         <div className="absolute right-0 mt-2 w-full sm:w-48 rounded-md shadow-lg bg-white">
                           <div className="py-1">
                             <Slider {...settings}>
                               {images.map((image) => (
                                 <div key={image.alt} className="mb-4">
-                                  <a
-                                    href="#"
-                                    className="flex flex-col md:flex-row items-center bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700"
-                                  >
-                                    <img
-                                      className="object-cover w-full rounded-t-lg h-96 md:h-auto md:w-48 md:rounded-none md:rounded-l-lg"
-                                      src={image.src}
-                                      alt={image.alt}
-                                    />
-                                    <div className="flex flex-col justify-between p-4 leading-normal">
-                                      <h5 className="mb-2 text-lg md:text-xl font-bold tracking-tight text-gray-900 dark:text-white">
-                                        {image.alt}
-                                      </h5>
-                                    </div>
-                                  </a>
+                                  <img
+                                    className="object-cover w-full rounded-t-lg h-96 md:h-auto md:w-48 md:rounded-none md:rounded-l-lg"
+                                    src={image.src}
+                                    alt={image.alt}
+                                  />
+                                  <div className="flex flex-col justify-between p-4 leading-normal">
+                                    <h5 className="mb-2 text-lg md:text-xl font-bold tracking-tight text-gray-900 dark:text-white">
+                                      {image.alt}
+                                    </h5>
+                                  </div>
                                 </div>
                               ))}
                             </Slider>
                           </div>
                         </div>
-                      )}
+                      )} */}
                     </div>
                   </div>
 
@@ -288,7 +305,10 @@ export default function Hero() {
                         </cite>
                       </div>
 
-                      <div className="flex flex-col sm:flex-row mt-6 pt-5 items-center justify-end">
+                      <div
+                        ref={menuRef}
+                        className="flex flex-col sm:flex-row mt-6 pt-5 items-center justify-end"
+                      >
                         <button
                           className="text-gray-800 font-semibold rounded items-center mr-4 mb-4 sm:mb-0"
                           onClick={toggleMenu}
@@ -305,30 +325,41 @@ export default function Hero() {
                           </svg>
                         </button>
                         {showMenu && (
-                          <div className="absolute right-0 mt-2 w-full sm:w-48 rounded-md shadow-lg bg-white">
-                            <div className="py-1">
-                              <Slider {...settings}>
-                                {images.map((image) => (
-                                  <div key={image.alt} className="mb-4">
-                                    <a
-                                      href="#"
-                                      className="flex flex-col md:flex-row items-center bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700"
-                                    >
-                                      <img
-                                        className="object-cover w-full rounded-t-lg h-96 md:h-auto md:w-48 md:rounded-none md:rounded-l-lg"
-                                        src={image.src}
-                                        alt={image.alt}
-                                      />
-                                      <div className="flex flex-col justify-between p-4 leading-normal">
-                                        <h5 className="mb-2 text-lg md:text-xl font-bold tracking-tight text-gray-900 dark:text-white">
-                                          {image.alt}
-                                        </h5>
-                                      </div>
-                                    </a>
+                          <div className="absolute right-0 mt-12 w-[330px] rounded-md shadow-lg bg-white">
+                            <Slider {...settings}>
+                              {images.map((image) => (
+                                <div key={image.alt} className="mb-4">
+                                  <div>
+                                    <ul className="divide-y divide-gray-200 dark:divide-gray-700">
+                                      <li className="pt-3 pb-0 sm:pt-4">
+                                        <div className="flex items-center space-x-4">
+                                          <div className="flex-shrink-0">
+                                            <img
+                                              className="w-12 h-12 rounded-full"
+                                              src={image.src}
+                                              alt=""
+                                            />
+                                          </div>
+                                          <div className="flex-1 min-w-0">
+                                            <p className="text-md font-medium text-gray-900 truncate dark:text-gray-400">
+                                              Liêm troller
+                                            </p>
+                                            <p className="text-sm text-gray-500 truncate dark:text-gray-400">
+                                              Côde nữa code mãi code quài code
+                                              dai
+                                              <br />
+                                              code dại code quá chời code kinh
+                                              <br />
+                                              khủng code code mệt mỏi
+                                            </p>
+                                          </div>
+                                        </div>
+                                      </li>
+                                    </ul>
                                   </div>
-                                ))}
-                              </Slider>
-                            </div>
+                                </div>
+                              ))}
+                            </Slider>
                           </div>
                         )}
                       </div>
