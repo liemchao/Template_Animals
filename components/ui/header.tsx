@@ -5,20 +5,39 @@ import toanhh from "../../public/images/LogoFVS.svg";
 import Image from "next/image";
 export default function Header() {
   return (
-    <header className="absolute w-full z-30">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6">
+    <header
+      className="absolute w-full z-30 bg-gray-200 "
+      style={{
+        flexGrow: 1,
+        marginBottom: "1rem",
+        marginTop: "1rem",
+        borderRadius: "20px",
+        height: "90px",
+        marginLeft: "2%",
+        width: "96%",
+      }}
+    >
+      <div className="max-w-9xl mx-auto px-4 sm:px-6 mt-1">
         <div className="flex items-center justify-between h-20">
           {/* Site branding */}
-          <div className="shrink-0 mr-4 mt-9">
-            <Link href="/" className="block" aria-label="Cruip">
-              <Image
-                className="max-w-full mx-auto md:max-w-none h-auto"
-                src={toanhh}
-                width={100}
-                height={100}
-                alt="Features 01"
-              />
-            </Link>
+          <div className="flex items-center">
+            <div className="shrink-0 mr-9 mt-1">
+              <Link href="/" className="block" aria-label="Cruip">
+                <Image
+                  className="max-w-full mx-auto md:max-w-none h-auto"
+                  src={toanhh}
+                  width={200}
+                  height={200}
+                  alt="Features 01"
+                />
+              </Link>
+            </div>
+            <h2
+              className="h2 mb-2 block text-black text-2xl md:text-3xl lg:text-3xl xl:text-5xl"
+              data-aos="fade-up"
+            >
+              Hệ thống bình chọn
+            </h2>
           </div>
 
           {/* Desktop navigation */}
@@ -27,18 +46,34 @@ export default function Header() {
             <ul className="flex grow justify-end flex-wrap items-center">
               <li>
                 <Link
-                  href="#"
-                  className="font-medium text-gray-200 hover:text-gray-200 px-4 py-3 flex items-center transition duration-150 ease-in-out"
+                  href="http://fpt-voting.surge.sh/authentication/sign-in"
+                  className="btn-sm text-black bg-purple-500 hover:bg-purple-700 ml-3 rounded-full"
                 >
-                  Tìm hiểu
+                  Chiến dịch
                 </Link>
               </li>
               <li>
                 <Link
                   href="http://fpt-voting.surge.sh/authentication/sign-in"
-                  className="btn-sm text-white bg-purple-600 hover:bg-purple-700 ml-3"
+                  className="btn-sm text-black bg-purple-500 hover:bg-purple-700 ml-3 rounded-full"
                 >
-                  Chiến dịch
+                  Tính năng
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="http://fpt-voting.surge.sh/authentication/sign-in"
+                  className="btn-sm text-black bg-purple-500 hover:bg-purple-700 ml-3 rounded-full"
+                >
+                  Hỗ Trợ
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="http://fpt-voting.surge.sh/authentication/sign-in"
+                  className="btn-sm text-black bg-purple-500 hover:bg-purple-700 ml-3 rounded-full"
+                >
+                  Đăng nhập
                 </Link>
               </li>
             </ul>

@@ -1,11 +1,64 @@
+"use client";
 import Image from "next/image";
-
+import Slider, { Settings } from "react-slick";
+import SliderRef from "react-slick";
+import Link from "next/link";
+import { useState, useEffect, useRef } from "react";
 import TestimonialImage01 from "@/public/images/testimonial-01.jpg";
 import TestimonialImage02 from "@/public/images/testimonial-02.jpg";
 import TestimonialImage03 from "@/public/images/testimonial-03.jpg";
+import { Carousel } from "@material-tailwind/react";
+
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+
 export default function Hero() {
+  const images = [
+    {
+      src: "https://images.unsplash.com/photo-1493246507139-91e8fad9978e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2940&q=80",
+      alt: "image 1",
+    },
+    {
+      src: "https://images.unsplash.com/photo-1518623489648-a173ef7824f3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2762&q=80",
+      alt: "image 2",
+    },
+    // add more images here
+  ];
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+  };
+
+  useEffect(() => {
+    setSlider(sliderRef.current);
+  }, []);
+
+  const toggleMenu = () => setShowMenu(!showMenu);
+  const [showMenu, setShowMenu] = useState(false);
+  const [slider, setSlider] = useState<SliderRef | null>(null);
+  const sliderRef = useRef<SliderRef | null>(null);
+
+  const handlePrev = () => {
+    if (slider) {
+      slider.slickPrev();
+    }
+  };
+
+  const handleNext = () => {
+    if (slider) {
+      slider.slickNext();
+    }
+  };
+
+  const handleMenuClick = () => {
+    setShowMenu(!showMenu);
+  };
+
   return (
-    <section>
+    <section className="">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 relative">
         {/* Illustration behind hero content */}
         <div
@@ -47,7 +100,7 @@ export default function Hero() {
         {/* Hero content */}
         <div className="relative pt-32 pb-10 md:pt-40 md:pb-16">
           {/* Section header */}
-          <div className="max-w-3xl mx-auto text-center text-gray-200 pb-12 md:pb-16">
+          {/* <div className="max-w-3xl mx-auto text-center text-gray-200 pb-12 md:pb-16">
             <h1 className="h1 mb-4" data-aos="fade-up">
               Hệ thống bình chọn
             </h1>
@@ -77,7 +130,7 @@ export default function Hero() {
                 </a>
               </div>
             </div>
-          </div>
+          </div> */}
           <section>
             <div className="max-w-6xl mx-auto px-4 sm:px-6">
               <div className="py-12 md:py-20 border-t border-gray-800">
@@ -154,12 +207,49 @@ export default function Hero() {
                       — Chiến dịch lỏ quá trời
                     </blockquote>
                     <div className="text-gray-700 font-medium mt-6 pt-5 border-t border-gray-700">
-                      <cite className="text-gray-200 not-italic">Tham gia</cite>{" "}
-                      -{" "}
-                      <a
-                        className="text-purple-600 hover:text-gray-200 transition duration-150 ease-in-out"
-                        href="#0"
-                      ></a>
+                      <cite className="text-gray-200 not-italic">Tham gia</cite>
+                    </div>
+                    <div className="flex flex-col sm:flex-row mt-6 pt-5 items-center justify-end">
+                      <button
+                        className="text-gray-800 font-semibold rounded items-center mr-4 mb-4 sm:mb-0"
+                        onClick={toggleMenu}
+                      >
+                        <span className="text-gray-200 not-italic">Menu</span>
+                        <svg
+                          className="fill-current h-4 w-4 ml-2"
+                          viewBox="0 0 20 20"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path d="M8.59 13.41L10 15l6-6-6-6-1.41 1.41L12.17 9H3v2h9.17l-3.58 3.58z" />
+                        </svg>
+                      </button>
+                      {showMenu && (
+                        <div className="absolute right-0 mt-2 w-full sm:w-48 rounded-md shadow-lg bg-white">
+                          <div className="py-1">
+                            <Slider {...settings}>
+                              {images.map((image) => (
+                                <div key={image.alt} className="mb-4">
+                                  <a
+                                    href="#"
+                                    className="flex flex-col md:flex-row items-center bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700"
+                                  >
+                                    <img
+                                      className="object-cover w-full rounded-t-lg h-96 md:h-auto md:w-48 md:rounded-none md:rounded-l-lg"
+                                      src={image.src}
+                                      alt={image.alt}
+                                    />
+                                    <div className="flex flex-col justify-between p-4 leading-normal">
+                                      <h5 className="mb-2 text-lg md:text-xl font-bold tracking-tight text-gray-900 dark:text-white">
+                                        {image.alt}
+                                      </h5>
+                                    </div>
+                                  </a>
+                                </div>
+                              ))}
+                            </Slider>
+                          </div>
+                        </div>
+                      )}
                     </div>
                   </div>
 
@@ -178,7 +268,7 @@ export default function Hero() {
                           height={48}
                           alt="Testimonial 03"
                         />
-                        
+
                         <svg
                           className="absolute top-0 right-0 -mr-3 w-6 h-5 fill-current text-purple-600"
                           viewBox="0 0 24 20"
@@ -191,29 +281,63 @@ export default function Hero() {
                     <blockquote className="text-lg text-gray-400 grow">
                       — Chiến dịch lỏ quá trời
                     </blockquote>
-                    <div className="text-gray-700 font-medium mt-6 pt-5 border-t border-gray-700">
-                      <cite className="text-gray-200 not-italic">Tham gia</cite>{" "}
-                      -{" "}
-                      <a
-                        className="text-purple-600 hover:text-gray-200 transition duration-150 ease-in-out"
-                        href="#0"
-                      ></a>
+                    <div className="flex">
+                      <div className="text-gray-700 font-medium mt-6 pt-5 border-t border-gray-700 flex-1">
+                        <cite className="text-gray-200 not-italic">
+                          Tham gia
+                        </cite>
+                      </div>
+
+                      <div className="flex flex-col sm:flex-row mt-6 pt-5 items-center justify-end">
+                        <button
+                          className="text-gray-800 font-semibold rounded items-center mr-4 mb-4 sm:mb-0"
+                          onClick={toggleMenu}
+                        >
+                          <span className="text-gray-200 not-italic">
+                            Candidate
+                          </span>
+                          <svg
+                            className="fill-current h-4 w-4 ml-2"
+                            viewBox="0 0 20 20"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <path d="M8.59 13.41L10 15l6-6-6-6-1.41 1.41L12.17 9H3v2h9.17l-3.58 3.58z" />
+                          </svg>
+                        </button>
+                        {showMenu && (
+                          <div className="absolute right-0 mt-2 w-full sm:w-48 rounded-md shadow-lg bg-white">
+                            <div className="py-1">
+                              <Slider {...settings}>
+                                {images.map((image) => (
+                                  <div key={image.alt} className="mb-4">
+                                    <a
+                                      href="#"
+                                      className="flex flex-col md:flex-row items-center bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700"
+                                    >
+                                      <img
+                                        className="object-cover w-full rounded-t-lg h-96 md:h-auto md:w-48 md:rounded-none md:rounded-l-lg"
+                                        src={image.src}
+                                        alt={image.alt}
+                                      />
+                                      <div className="flex flex-col justify-between p-4 leading-normal">
+                                        <h5 className="mb-2 text-lg md:text-xl font-bold tracking-tight text-gray-900 dark:text-white">
+                                          {image.alt}
+                                        </h5>
+                                      </div>
+                                    </a>
+                                  </div>
+                                ))}
+                              </Slider>
+                            </div>
+                          </div>
+                        )}
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
           </section>
-
-          {/* <ModalVideo
-            thumb={VideoThumb}
-            thumbWidth={1024}
-            thumbHeight={576}
-            thumbAlt="Modal video thumbnail"
-            video="/videos/video.mp4"
-            videoWidth={1920}
-            videoHeight={1080}
-          /> */}
         </div>
       </div>
     </section>
