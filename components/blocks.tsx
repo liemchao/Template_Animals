@@ -8,7 +8,7 @@ export default function Blocks() {
             <h2 className="h2 mb-4">
               Tại sao phải lựa chọn hệ thống của chúng tôi.
             </h2>
-            <p className="text-xl text-gray-400">
+            <p className="text-xl text-gray-200">
               Chúng tôi cung cấp một hệ thống bình chọn gồm nhiều tiêu chí phù
               hợp với các yêu cầu của bạn.
             </p>

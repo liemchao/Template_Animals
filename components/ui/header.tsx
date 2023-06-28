@@ -1,6 +1,7 @@
 import Link from "next/link";
 import MobileMenu from "./mobile-menu";
 import Avatar1 from "@/public/images/Avatar1.png";
+import toanhh from "../../public/images/LogoFVS.svg";
 import Image from "next/image";
 export default function Header() {
   return (
@@ -12,7 +13,7 @@ export default function Header() {
             <Link href="/" className="block" aria-label="Cruip">
               <Image
                 className="max-w-full mx-auto md:max-w-none h-auto"
-                src={Avatar1}
+                src={toanhh}
                 width={100}
                 height={100}
                 alt="Features 01"
@@ -26,15 +27,15 @@ export default function Header() {
             <ul className="flex grow justify-end flex-wrap items-center">
               <li>
                 <Link
-                  href="/signin"
-                  className="font-medium text-purple-600 hover:text-gray-200 px-4 py-3 flex items-center transition duration-150 ease-in-out"
+                  href="#"
+                  className="font-medium text-gray-200 hover:text-gray-200 px-4 py-3 flex items-center transition duration-150 ease-in-out"
                 >
                   Tìm hiểu
                 </Link>
               </li>
               <li>
                 <Link
-                  href="/signup"
+                  href="http://fpt-voting.surge.sh/authentication/sign-in"
                   className="btn-sm text-white bg-purple-600 hover:bg-purple-700 ml-3"
                 >
                   Chiến dịch

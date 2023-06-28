@@ -4,11 +4,11 @@ export default function Features() {
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
         <div className="py-12 md:py-20">
           {/* Section header */}
-          <div className="max-w-3xl mx-auto text-center pb-12 md:pb-20">
+          <div className="max-w-3xl mx-auto text-center pb-12 md:pb-20 text-gray-200">
             <h2 className="h2 mb-4">
               Tại sao phải lựa chọn hệ thống của chúng tôi ?
             </h2>
-            <p className="text-xl text-gray-400">
+            <p className="text-xl text-gray-200">
               Chúng tôi cung cấp một hệ thống bình chọn gồm nhiều tiêu chí phù
               hợp với các yêu cầu của bạn.
             </p>
@@ -51,8 +51,8 @@ export default function Features() {
                   strokeWidth="2"
                 />
               </svg>
-              <h4 className="h4 mb-2">Đánh giá</h4>
-              <p className="text-lg text-gray-400 text-center">
+              <h4 className="h4 mb-2 text-gray-200">Đánh giá</h4>
+              <p className="text-lg text-gray-200 text-center">
                 Đánh giá các chiến dịch và nhận các bình luận cho chiến dịch
               </p>
             </div>
@@ -90,8 +90,8 @@ export default function Features() {
                   strokeLinecap="square"
                 />
               </svg>
-              <h4 className="h4 mb-2">Các mẫu bình chọn</h4>
-              <p className="text-lg text-gray-400 text-center">
+              <h4 className="h4 mb-2 text-gray-200">Các mẫu bình chọn</h4>
+              <p className="text-lg text-gray-200 text-center">
                 Chúng tôi cung cấp nhiều mẫu bình chọn cho các người dùng chọn
                 lựa
               </p>
@@ -141,8 +141,8 @@ export default function Features() {
                   />
                 </g>
               </svg>
-              <h4 className="h4 mb-2">Tính bảo mật</h4>
-              <p className="text-lg text-gray-400 text-center">
+              <h4 className="h4 mb-2 text-gray-200">Tính bảo mật</h4>
+              <p className="text-lg text-gray-200 text-center">
                 Tất cả thông tin người dùng người ứng cử viên. Các thông tin sẽ
                 được bảo mật.
               </p>

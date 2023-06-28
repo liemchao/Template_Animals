@@ -9,6 +9,7 @@ import Newsletter from "@/components/newsletter";
 import Zigzag from "@/components/zigzag";
 import Testimonials from "@/components/testimonials";
 import Slider from "@/components/ui/silder";
+import Footer from "@/components/ui/footer";
 
 export default function Home() {
   return (
@@ -17,7 +18,7 @@ export default function Home() {
       <Features />
       <Zigzag />
       <Slider />
-      <Testimonials />
+      {/* <Testimonials /> */}
       <Newsletter />
     </>
   );

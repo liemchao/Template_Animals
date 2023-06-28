@@ -2,7 +2,6 @@ import Image from "next/image";
 
 import FeatImage01 from "@/public/images/features-03-image-01.png";
 import FeatImage02 from "@/public/images/features-03-image-02.png";
-import FeatImage03 from "@/public/images/features-03-image-03.png";
 
 export default function Zigzag() {
   return (
@@ -11,13 +10,15 @@ export default function Zigzag() {
         <div className="py-12 md:py-20 border-t border-gray-800">
           {/* Section header */}
           <div className="max-w-3xl mx-auto text-center pb-12 md:pb-16">
-            <div className="inline-flex text-sm font-semibold py-1 px-3 m-2 text-green-600 bg-green-200 rounded-full mb-4">
-              Reach goals that matter
-            </div>
-            <h1 className="h2 mb-4">One product, unlimited solutions</h1>
-            <p className="text-xl text-gray-400">
-              Excepteur sint occaecat cupidatat non proident, sunt in culpa qui
-              officia deserunt mollit laborum — semper quis lectus nulla.
+            {/* <div className="inline-flex text-sm font-semibold py-1 px-3 m-2 text-gray-900 bg-green-100 rounded-full mb-4">
+              Giao diện quản lý
+            </div> */}
+            <h1 className="h2 mb-4 text-gray-200">
+              Sản phẩm chúng tôi cung cấp thống kê bằng bảng thông dụng
+            </h1>
+            <p className="text-xl text-gray-200">
+              Những thiết kế cơ bản nhưng mang lại hiệu quả cao trong quản lý
+              các nguồn tài nguyên cho người dùng những trãi nghiệm chân thật
             </p>
           </div>
 
@@ -44,16 +45,16 @@ export default function Zigzag() {
                 data-aos="fade-right"
               >
                 <div className="md:pr-4 lg:pr-12 xl:pr-16">
-                  <div className="font-architects-daughter text-xl text-purple-600 mb-2">
-                    More speed. Less spend
-                  </div>
-                  <h3 className="h3 mb-3">Keep projects on schedule</h3>
-                  <p className="text-xl text-gray-400 mb-4">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                    do eiusmod tempor incididunt ut labore et dolore magna
-                    aliqua.
+                  {/* <div className=" text-xl text-gray-200 mb-2">
+                    Nhanh chóng. Hiệu quả
+                  </div> */}
+                  <h3 className="h3 mb-3 text-gray-200">
+                    Quản lý những chiến dịch
+                  </h3>
+                  <p className="text-xl text-gray-200 mb-4">
+                    Thoải mái lựa chọn tham gia những chiến dịch mà bạn thích.
                   </p>
-                  <ul className="text-lg text-gray-400 -mb-2">
+                  <ul className="text-lg text-gray-200-mb-2">
                     <li className="flex items-center mb-2">
                       <svg
                         className="w-3 h-3 fill-current text-green-500 mr-2 shrink-0"
@@ -62,7 +63,7 @@ export default function Zigzag() {
                       >
                         <path d="M10.28 2.28L3.989 8.575 1.695 6.28A1 1 0 00.28 7.695l3 3a1 1 0 001.414 0l7-7A1 1 0 0010.28 2.28z" />
                       </svg>
-                      <span>Duis aute irure dolor in reprehenderit</span>
+                      <span className="text-gray-200">Tham gia chiến dịch</span>
                     </li>
                     <li className="flex items-center mb-2">
                       <svg
@@ -72,7 +73,7 @@ export default function Zigzag() {
                       >
                         <path d="M10.28 2.28L3.989 8.575 1.695 6.28A1 1 0 00.28 7.695l3 3a1 1 0 001.414 0l7-7A1 1 0 0010.28 2.28z" />
                       </svg>
-                      <span>Excepteur sint occaecat</span>
+                      <span className="text-gray-200">Chia sẻ chiến dịch</span>
                     </li>
                     <li className="flex items-center">
                       <svg
@@ -82,7 +83,9 @@ export default function Zigzag() {
                       >
                         <path d="M10.28 2.28L3.989 8.575 1.695 6.28A1 1 0 00.28 7.695l3 3a1 1 0 001.414 0l7-7A1 1 0 0010.28 2.28z" />
                       </svg>
-                      <span>Amet consectetur adipiscing elit</span>
+                      <span className="text-gray-200">
+                        Tạo chiến dịch cho bản thân
+                      </span>
                     </li>
                   </ul>
                 </div>
@@ -110,16 +113,18 @@ export default function Zigzag() {
                 data-aos="fade-left"
               >
                 <div className="md:pl-4 lg:pl-12 xl:pl-16">
-                  <div className="font-architects-daughter text-xl text-purple-600 mb-2">
-                    More speed. Less spend
-                  </div>
-                  <h3 className="h3 mb-3">Keep projects on schedule</h3>
-                  <p className="text-xl text-gray-400 mb-4">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                    do eiusmod tempor incididunt ut labore et dolore magna
-                    aliqua.
+                  {/* <div className=" text-xl text-gray-200 mb-2">
+                    Chia sẻ nhanh chóng
+                  </div> */}
+                  <h3 className="h3 mb-3 text-gray-200">
+                    Hỗ trợ chia sẻ chiến dịch với nhau
+                  </h3>
+                  <p className="text-xl text-gray-200 mb-4">
+                    Thông qua nhiều cách để tham gia các chiến dịch của chúng
+                    tôi. Bình chọn đưa ra các ứng cử viên phù hợp cho từng vấn
+                    đề
                   </p>
-                  <ul className="text-lg text-gray-400 -mb-2">
+                  <ul className="text-lg text-gray-200-mb-2">
                     <li className="flex items-center mb-2">
                       <svg
                         className="w-3 h-3 fill-current text-green-500 mr-2 shrink-0"
@@ -128,7 +133,7 @@ export default function Zigzag() {
                       >
                         <path d="M10.28 2.28L3.989 8.575 1.695 6.28A1 1 0 00.28 7.695l3 3a1 1 0 001.414 0l7-7A1 1 0 0010.28 2.28z" />
                       </svg>
-                      <span>Duis aute irure dolor in reprehenderit</span>
+                      <span className="text-gray-200">Đăng nhập trực tiếp</span>
                     </li>
                     <li className="flex items-center mb-2">
                       <svg
@@ -138,7 +143,9 @@ export default function Zigzag() {
                       >
                         <path d="M10.28 2.28L3.989 8.575 1.695 6.28A1 1 0 00.28 7.695l3 3a1 1 0 001.414 0l7-7A1 1 0 0010.28 2.28z" />
                       </svg>
-                      <span>Excepteur sint occaecat</span>
+                      <span className="text-gray-200">
+                        Tham gia bằng QR code
+                      </span>
                     </li>
                     <li className="flex items-center">
                       <svg
@@ -148,7 +155,9 @@ export default function Zigzag() {
                       >
                         <path d="M10.28 2.28L3.989 8.575 1.695 6.28A1 1 0 00.28 7.695l3 3a1 1 0 001.414 0l7-7A1 1 0 0010.28 2.28z" />
                       </svg>
-                      <span>Amet consectetur adipiscing elit</span>
+                      <span className="text-gray-200">
+                        Tham gia bằng đường dẫn chia sẻ
+                      </span>
                     </li>
                   </ul>
                 </div>
