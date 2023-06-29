@@ -11,8 +11,25 @@ import { Carousel } from "@material-tailwind/react";
 
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import handlePosts from "@/app/api/HandleCampaign";
 
 export default function Hero() {
+  // const [data, setData] = useState([]);
+
+  const getAllCampain = async () => {
+    const api = "/api/v1/campaigns";
+    try {
+      const res: any = await handlePosts.getCampaign(api);
+      if (res) {
+        console.log(res.data);
+      } else {
+        console.log("not found");
+      }
+    } catch (error) {
+      console.log(`Can not get campaign ${error}`);
+    }
+  };
+
   const images = [
     {
       src: "https://images.unsplash.com/photo-1493246507139-91e8fad9978e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2940&q=80",
@@ -35,6 +52,20 @@ export default function Hero() {
   useEffect(() => {
     setSlider(sliderRef.current);
   }, []);
+
+  useEffect(() => {
+    getAllCampain();
+  }, []);
+
+  // useEffect(() => {
+  //   async function fetchData() {
+  //     const response = await axios.get(
+  //       "http://xuanthuan-001-site1.htempurl.com/api/v1/campaigns"
+  //     );
+  //     setData(response.data.data);
+  //   }
+  //   fetchData();
+  // }, []);
 
   const [showMenu, setShowMenu] = useState(false);
   const [slider, setSlider] = useState<SliderRef | null>(null);
@@ -154,6 +185,14 @@ export default function Hero() {
             </div>
           </div> */}
           <section>
+            {/* {data ? (
+        <div>
+          <h1>{data.title}</h1>
+          <p>{data.description}</p>
+        </div>
+      ) : (
+        <p>Loading...</p>
+      )} */}
             <div className="max-w-6xl mx-auto px-4 sm:px-6">
               <div className="py-12 md:py-20 border-t border-gray-800">
                 {/* Section header */}
