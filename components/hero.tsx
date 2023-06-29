@@ -11,8 +11,10 @@ import { Carousel } from "@material-tailwind/react";
 
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import axios from "axios";
 
 export default function Hero() {
+  const [data, setData] = useState();
   const images = [
     {
       src: "https://images.unsplash.com/photo-1493246507139-91e8fad9978e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2940&q=80",
@@ -34,6 +36,17 @@ export default function Hero() {
 
   useEffect(() => {
     setSlider(sliderRef.current);
+  }, []);
+
+  useEffect(() => {
+    async function fetchData() {
+      const response = await axios.get(
+        "http://xuanthuan-001-site1.htempurl.com/api/v1/campaigns"
+      );
+      setData(response.data.data);
+      console.log(response.data.data);
+    }
+    fetchData();
   }, []);
 
   const toggleMenu = () => setShowMenu(!showMenu);
@@ -149,51 +162,62 @@ export default function Hero() {
                     className="flex flex-col h-full p-6 bg-gray-800"
                     data-aos="fade-up"
                   >
-                    <div>
-                      <div className="relative inline-flex flex-col mb-4">
-                        <Image
-                          className="rounded-full"
-                          src={TestimonialImage01}
-                          width={48}
-                          height={48}
-                          alt="Testimonial 01"
-                        />
-                        <svg
-                          className="absolute top-0 right-0 -mr-3 w-6 h-5 fill-current text-purple-600"
-                          viewBox="0 0 24 20"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <path d="M0 13.517c0-2.346.611-4.774 1.833-7.283C3.056 3.726 4.733 1.648 6.865 0L11 2.696C9.726 4.393 8.777 6.109 8.152 7.844c-.624 1.735-.936 3.589-.936 5.56v4.644H0v-4.531zm13 0c0-2.346.611-4.774 1.833-7.283 1.223-2.508 2.9-4.586 5.032-6.234L24 2.696c-1.274 1.697-2.223 3.413-2.848 5.148-.624 1.735-.936 3.589-.936 5.56v4.644H13v-4.531z" />
-                        </svg>
-                      </div>
-                    </div>
-                    <blockquote className="text-lg text-gray-400 grow">
-                      — Chiến dịch lỏ quá trời
-                    </blockquote>
-                    <div className="text-gray-700 font-medium mt-6 pt-5 border-t border-gray-700">
-                      <cite className="text-gray-200 not-italic">Tham gia</cite>
-                      <a
-                        className="text-purple-600 hover:text-gray-200 transition duration-150 ease-in-out"
-                        href="#0"
-                      ></a>
-                    </div>
+                    {data ? (
+                      <>
+                        <div>
+                          <div className="relative inline-flex flex-col mb-4">
+                            <Image
+                              className="rounded-full"
+                              src={TestimonialImage01}
+                              width={48}
+                              height={48}
+                              alt="Testimonial 01"
+                            />
+                            <svg
+                              className="absolute top-0 right-0 -mr-3 w-6 h-5 fill-current text-purple-600"
+                              viewBox="0 0 24 20"
+                              xmlns="http://www.w3.org/2000/svg"
+                            >
+                              <path d="M0 13.517c0-2.346.611-4.774 1.833-7.283C3.056 3.726 4.733 1.648 6.865 0L11 2.696C9.726 4.393 8.777 6.109 8.152 7.844c-.624 1.735-.936 3.589-.936 5.56v4.644H0v-4.531zm13 0c0-2.346.611-4.774 1.833-7.283 1.223-2.508 2.9-4.586 5.032-6.234L24 2.696c-1.274 1.697-2.223 3.413-2.848 5.148-.624 1.735-.936 3.589-.936 5.56v4.644H13v-4.531z" />
+                            </svg>
+                          </div>
+                        </div>
+                        <blockquote className="text-lg text-gray-400 grow">
+                          {/* {data.title} */}
+                        </blockquote>
+                        <div className="text-gray-700 font-medium mt-6 pt-5 border-t border-gray-700">
+                          <cite className="text-gray-200 not-italic">
+                            Tham gia
+                          </cite>
+                          <a
+                            className="text-purple-600 hover:text-gray-200 transition duration-150 ease-in-out"
+                            href="#0"
+                          ></a>
+                        </div>{" "}
+                      </>
+                    ) : (
+                      <>
+                        <p>Có cái loz</p>
+                      </>
+                    )}
                   </div>
 
                   {/* 2nd testimonial */}
                   <div
                     className="flex flex-col h-full p-6 bg-gray-800"
                     data-aos="fade-up"
-                    data-aos-delay="200"
+                    data-aos-delay="400"
                   >
                     <div>
                       <div className="relative inline-flex flex-col mb-4">
                         <Image
                           className="rounded-full"
-                          src={TestimonialImage02}
+                          src={TestimonialImage03}
                           width={48}
                           height={48}
-                          alt="Testimonial 02"
+                          alt="Testimonial 03"
                         />
+
                         <svg
                           className="absolute top-0 right-0 -mr-3 w-6 h-5 fill-current text-purple-600"
                           viewBox="0 0 24 20"
@@ -206,50 +230,57 @@ export default function Hero() {
                     <blockquote className="text-lg text-gray-400 grow">
                       — Chiến dịch lỏ quá trời
                     </blockquote>
-                    <div className="text-gray-700 font-medium mt-6 pt-5 border-t border-gray-700">
-                      <cite className="text-gray-200 not-italic">Tham gia</cite>
-                    </div>
-                    <div className="flex flex-col sm:flex-row mt-6 pt-5 items-center justify-end">
-                      <button
-                        className="text-gray-800 font-semibold rounded items-center mr-4 mb-4 sm:mb-0"
-                        onClick={toggleMenu}
-                      >
-                        <span className="text-gray-200 not-italic">Menu</span>
-                        <svg
-                          className="fill-current h-4 w-4 ml-2"
-                          viewBox="0 0 20 20"
-                          xmlns="http://www.w3.org/2000/svg"
+                    <div className="flex">
+                      <div className="text-gray-700 font-medium mt-6 pt-5 border-t border-gray-700 flex-1">
+                        <cite className="text-gray-200 not-italic">
+                          Tham gia
+                        </cite>
+                      </div>
+
+                      <div className="flex flex-col sm:flex-row mt-6 pt-5 items-center justify-end">
+                        <button
+                          className="text-gray-800 font-semibold rounded items-center mr-4 mb-4 sm:mb-0"
+                          onClick={toggleMenu}
                         >
-                          <path d="M8.59 13.41L10 15l6-6-6-6-1.41 1.41L12.17 9H3v2h9.17l-3.58 3.58z" />
-                        </svg>
-                      </button>
-                      {showMenu && (
-                        <div className="absolute right-0 mt-2 w-full sm:w-48 rounded-md shadow-lg bg-white">
-                          <div className="py-1">
-                            <Slider {...settings}>
-                              {images.map((image) => (
-                                <div key={image.alt} className="mb-4">
-                                  <a
-                                    href="#"
-                                    className="flex flex-col md:flex-row items-center bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700"
-                                  >
-                                    <img
-                                      className="object-cover w-full rounded-t-lg h-96 md:h-auto md:w-48 md:rounded-none md:rounded-l-lg"
-                                      src={image.src}
-                                      alt={image.alt}
-                                    />
-                                    <div className="flex flex-col justify-between p-4 leading-normal">
-                                      <h5 className="mb-2 text-lg md:text-xl font-bold tracking-tight text-gray-900 dark:text-white">
-                                        {image.alt}
-                                      </h5>
-                                    </div>
-                                  </a>
-                                </div>
-                              ))}
-                            </Slider>
+                          <span className="text-gray-200 not-italic">
+                            Candidate
+                          </span>
+                          <svg
+                            className="fill-current h-4 w-4 ml-2"
+                            viewBox="0 0 20 20"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <path d="M8.59 13.41L10 15l6-6-6-6-1.41 1.41L12.17 9H3v2h9.17l-3.58 3.58z" />
+                          </svg>
+                        </button>
+                        {showMenu && (
+                          <div className="absolute right-0 mt-2 w-full sm:w-48 rounded-md shadow-lg bg-white">
+                            <div className="py-1">
+                              <Slider {...settings}>
+                                {images.map((image) => (
+                                  <div key={image.alt} className="mb-4">
+                                    <a
+                                      href="#"
+                                      className="flex flex-col md:flex-row items-center bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700"
+                                    >
+                                      <img
+                                        className="object-cover w-full rounded-t-lg h-96 md:h-auto md:w-48 md:rounded-none md:rounded-l-lg"
+                                        src={image.src}
+                                        alt={image.alt}
+                                      />
+                                      <div className="flex flex-col justify-between p-4 leading-normal">
+                                        <h5 className="mb-2 text-lg md:text-xl font-bold tracking-tight text-gray-900 dark:text-white">
+                                          {image.alt}
+                                        </h5>
+                                      </div>
+                                    </a>
+                                  </div>
+                                ))}
+                              </Slider>
+                            </div>
                           </div>
-                        </div>
-                      )}
+                        )}
+                      </div>
                     </div>
                   </div>
 
