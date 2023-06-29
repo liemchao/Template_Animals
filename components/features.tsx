@@ -1,6 +1,6 @@
 export default function Features() {
   return (
-    <section>
+    <section id="section-2">
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
         <div className="py-12 md:py-20">
           {/* Section header */}
@@ -31,7 +31,7 @@ export default function Features() {
                 xmlns="http://www.w3.org/2000/svg"
               >
                 <rect
-                  className="fill-current text-purple-600"
+                  className="fill-current text-purple-900"
                   width="64"
                   height="64"
                   rx="32"
@@ -70,7 +70,7 @@ export default function Features() {
                 xmlns="http://www.w3.org/2000/svg"
               >
                 <circle
-                  className="fill-current text-purple-600"
+                  className="fill-current text-purple-900"
                   cx="32"
                   cy="32"
                   r="32"
@@ -110,7 +110,7 @@ export default function Features() {
                 xmlns="http://www.w3.org/2000/svg"
               >
                 <rect
-                  className="fill-current text-purple-600"
+                  className="fill-current text-purple-900"
                   width="64"
                   height="64"
                   rx="32"

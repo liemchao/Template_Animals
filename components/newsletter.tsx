@@ -1,6 +1,6 @@
 export default function Newsletter() {
   return (
-    <section>
+    <section id="section-4">
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
         {/* CTA box */}
         <div
@@ -55,12 +55,12 @@ export default function Newsletter() {
               <div className="flex flex-col sm:flex-row justify-center max-w-xs mx-auto sm:max-w-md lg:max-w-none">
                 <input
                   type="email"
-                  className="w-full appearance-none text-black border border-purple-500 focus:border-purple-300 rounded-sm px-4 py-3 mb-2 sm:mb-0 sm:mr-2 text-black placeholder-purple-400"
+                  className="w-full appearance-none text-black border border-purple-500 focus:border-purple-300 rounded-sm px-4 py-3 mb-2 sm:mb-0 sm:mr-2 text-black placeholder-black-400"
                   placeholder="Địa chỉ email của bạn"
                   aria-label="Địa chỉ email của bạn"
                 />
                 <a
-                  className="btn bg-purple-600 bg-purple-100 hover:bg-purple-400 shadow"
+                  className="btn bg-green-100 hover:bg-green-900 shadow"
                   href="#0"
                 >
                   Subscribe

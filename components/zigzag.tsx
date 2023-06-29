@@ -5,7 +5,7 @@ import FeatImage02 from "@/public/images/features-03-image-02.png";
 
 export default function Zigzag() {
   return (
-    <section>
+    <section id="section-3">
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
         <div className="py-12 md:py-20 border-t border-gray-800">
           {/* Section header */}

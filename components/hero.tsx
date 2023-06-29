@@ -11,17 +11,43 @@ import { Carousel } from "@material-tailwind/react";
 
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import handlePosts from "@/app/api/HandleCampaign";
+import handleCampaign from "@/app/api/HandleCampaign";
+import axios from "axios";
+
+interface ApiResponse {
+  campaignId: string;
+  title: string;
+  startTime: string;
+  endTime: string;
+  visibility: string;
+  imgUrl: any;
+  userId: string;
+  categoryId: string;
+  stage: Stage[];
+  // Định nghĩa các thuộc tính của đối tượng phản hồi
+}
+
+interface Stage {
+  stageId: string;
+  title: string;
+  description: string;
+  content: string;
+  startTime: string;
+  endTime: string;
+  campaignId: string;
+  formId: string;
+}
 
 export default function Hero() {
-  // const [data, setData] = useState([]);
+  const [data, setData] = useState<ApiResponse | null>(null);
 
   const getAllCampain = async () => {
-    const api = "/api/v1/campaigns";
     try {
-      const res: any = await handlePosts.getCampaign(api);
+      const res: any = await axios.get<ApiResponse>(
+        "http://xuanthuan-001-site1.htempurl.com/api/v1/campaigns"
+      );
       if (res) {
-        console.log(res.data);
+        setData(res.data.data);
       } else {
         console.log("not found");
       }
@@ -111,7 +137,7 @@ export default function Hero() {
   };
 
   return (
-    <section className="">
+    <section id="section-1">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 relative">
         {/* Illustration behind hero content */}
         <div
@@ -186,132 +212,25 @@ export default function Hero() {
           </div> */}
           <section>
             {/* {data ? (
-        <div>
-          <h1>{data.title}</h1>
-          <p>{data.description}</p>
-        </div>
-      ) : (
-        <p>Loading...</p>
-      )} */}
+              <div>
+                <h1 className="text-gray-">{data.title}</h1>
+                <h1 className="text-gray-">{data.endTime}</h1>
+              </div>
+            ) : (
+              <p>Loading...</p>
+            )} */}
             <div className="max-w-6xl mx-auto px-4 sm:px-6">
-              <div className="py-12 md:py-20 border-t border-gray-800">
+              <div className="py-12 md:py-20">
                 {/* Section header */}
                 <div className="max-w-3xl mx-auto text-center pb-12 md:pb-20">
                   <h2 className="h2 mb-4">Các chiến dịch đang diễn ra</h2>
-                  <p className="text-xl text-gray-200">
-                    Lựa chọn chiến dịch và tham gia bình chọn ngay
-                  </p>
                 </div>
 
                 {/* Testimonials */}
                 <div className="max-w-sm mx-auto grid gap-8 lg:grid-cols-3 lg:gap-6 items-start lg:max-w-none">
                   {/* 1st testimonial */}
                   <div
-                    className="flex flex-col h-full p-6 bg-gray-800"
-                    data-aos="fade-up"
-                  >
-                    <div>
-                      <div className="relative inline-flex flex-col mb-4">
-                        <Image
-                          className="rounded-full"
-                          src={TestimonialImage01}
-                          width={48}
-                          height={48}
-                          alt="Testimonial 01"
-                        />
-                        <svg
-                          className="absolute top-0 right-0 -mr-3 w-6 h-5 fill-current text-purple-600"
-                          viewBox="0 0 24 20"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <path d="M0 13.517c0-2.346.611-4.774 1.833-7.283C3.056 3.726 4.733 1.648 6.865 0L11 2.696C9.726 4.393 8.777 6.109 8.152 7.844c-.624 1.735-.936 3.589-.936 5.56v4.644H0v-4.531zm13 0c0-2.346.611-4.774 1.833-7.283 1.223-2.508 2.9-4.586 5.032-6.234L24 2.696c-1.274 1.697-2.223 3.413-2.848 5.148-.624 1.735-.936 3.589-.936 5.56v4.644H13v-4.531z" />
-                        </svg>
-                      </div>
-                    </div>
-                    <blockquote className="text-lg text-gray-400 grow">
-                      — Chiến dịch lỏ quá trời
-                    </blockquote>
-                    <div className="text-gray-700 font-medium mt-6 pt-5 border-t border-gray-700">
-                      <cite className="text-gray-200 not-italic">Tham gia</cite>
-                      <a
-                        className="text-purple-600 hover:text-gray-200 transition duration-150 ease-in-out"
-                        href="#0"
-                      ></a>
-                    </div>
-                  </div>
-
-                  {/* 2nd testimonial */}
-                  <div
-                    className="flex flex-col h-full p-6 bg-gray-800"
-                    data-aos="fade-up"
-                    data-aos-delay="200"
-                  >
-                    <div>
-                      <div className="relative inline-flex flex-col mb-4">
-                        <Image
-                          className="rounded-full"
-                          src={TestimonialImage02}
-                          width={48}
-                          height={48}
-                          alt="Testimonial 02"
-                        />
-                        <svg
-                          className="absolute top-0 right-0 -mr-3 w-6 h-5 fill-current text-purple-600"
-                          viewBox="0 0 24 20"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <path d="M0 13.517c0-2.346.611-4.774 1.833-7.283C3.056 3.726 4.733 1.648 6.865 0L11 2.696C9.726 4.393 8.777 6.109 8.152 7.844c-.624 1.735-.936 3.589-.936 5.56v4.644H0v-4.531zm13 0c0-2.346.611-4.774 1.833-7.283 1.223-2.508 2.9-4.586 5.032-6.234L24 2.696c-1.274 1.697-2.223 3.413-2.848 5.148-.624 1.735-.936 3.589-.936 5.56v4.644H13v-4.531z" />
-                        </svg>
-                      </div>
-                    </div>
-                    <blockquote className="text-lg text-gray-400 grow">
-                      — Chiến dịch lỏ quá trời
-                    </blockquote>
-                    <div className="text-gray-700 font-medium mt-6 pt-5 border-t border-gray-700">
-                      <cite className="text-gray-200 not-italic">Tham gia</cite>
-                    </div>
-                    <div className="flex flex-col sm:flex-row mt-6 pt-5 items-center justify-end">
-                      <button
-                        className="text-gray-800 font-semibold rounded items-center mr-4 mb-4 sm:mb-0"
-                        onClick={toggleMenu}
-                      >
-                        <span className="text-gray-200 not-italic">Menu</span>
-                        <svg
-                          className="fill-current h-4 w-4 ml-2"
-                          viewBox="0 0 20 20"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <path d="M8.59 13.41L10 15l6-6-6-6-1.41 1.41L12.17 9H3v2h9.17l-3.58 3.58z" />
-                        </svg>
-                      </button>
-                      {/* {showMenu && (
-                        <div className="absolute right-0 mt-2 w-full sm:w-48 rounded-md shadow-lg bg-white">
-                          <div className="py-1">
-                            <Slider {...settings}>
-                              {images.map((image) => (
-                                <div key={image.alt} className="mb-4">
-                                  <img
-                                    className="object-cover w-full rounded-t-lg h-96 md:h-auto md:w-48 md:rounded-none md:rounded-l-lg"
-                                    src={image.src}
-                                    alt={image.alt}
-                                  />
-                                  <div className="flex flex-col justify-between p-4 leading-normal">
-                                    <h5 className="mb-2 text-lg md:text-xl font-bold tracking-tight text-gray-900 dark:text-white">
-                                      {image.alt}
-                                    </h5>
-                                  </div>
-                                </div>
-                              ))}
-                            </Slider>
-                          </div>
-                        </div>
-                      )} */}
-                    </div>
-                  </div>
-
-                  {/* 3rd testimonial */}
-                  <div
-                    className="flex flex-col h-full p-6 bg-gray-800"
+                    className="flex flex-col h-full p-6 bg-gray-200"
                     data-aos="fade-up"
                     data-aos-delay="400"
                   >
@@ -339,9 +258,11 @@ export default function Hero() {
                     </blockquote>
                     <div className="flex">
                       <div className="text-gray-700 font-medium mt-6 pt-5 border-t border-gray-700 flex-1">
-                        <cite className="text-gray-200 not-italic">
-                          Tham gia
-                        </cite>
+                        <button className="text-gray-800 font-semibold rounded items-center mr-4 mb-4 sm:mb-0 flex">
+                          <span className="text-black not-italic">
+                            Tham gia
+                          </span>
+                        </button>
                       </div>
 
                       <div
@@ -349,16 +270,215 @@ export default function Hero() {
                         className="flex flex-col sm:flex-row mt-6 pt-5 items-center justify-end"
                       >
                         <button
-                          className="text-gray-800 font-semibold rounded items-center mr-4 mb-4 sm:mb-0"
+                          className="text-gray-800 font-semibold rounded items-center mr-4 mb-4 sm:mb-0 flex"
                           onClick={toggleMenu}
                         >
-                          <span className="text-gray-200 not-italic">
+                          <span className="text-black not-italic">
                             Candidate
                           </span>
                           <svg
                             className="fill-current h-4 w-4 ml-2"
                             viewBox="0 0 20 20"
                             xmlns="http://www.w3.org/2000/svg"
+                            style={{ transform: "rotate(90deg)" }}
+                          >
+                            <path d="M8.59 13.41L10 15l6-6-6-6-1.41 1.41L12.17 9H3v2h9.17l-3.58 3.58z" />
+                          </svg>
+                        </button>
+                        {showMenu && (
+                          <div className="absolute right-0 mt-12 w-[330px] rounded-md shadow-lg bg-white">
+                            <Slider {...settings}>
+                              {images.map((image) => (
+                                <div key={image.alt} className="mb-4">
+                                  <div>
+                                    <ul className="divide-y divide-gray-200 dark:divide-gray-700">
+                                      <li className="pt-3 pb-0 sm:pt-4">
+                                        <div className="flex items-center space-x-4">
+                                          <div className="flex-shrink-0">
+                                            <img
+                                              className="w-12 h-12 rounded-full"
+                                              src={image.src}
+                                              alt=""
+                                            />
+                                          </div>
+                                          <div className="flex-1 min-w-0">
+                                            <p className="text-md font-medium text-gray-900 truncate dark:text-gray-400">
+                                              Liêm troller
+                                            </p>
+                                            <p className="text-sm text-gray-500 truncate dark:text-gray-400">
+                                              Côde nữa code mãi code quài code
+                                              dai
+                                              <br />
+                                              code dại code quá chời code kinh
+                                              <br />
+                                              khủng code code mệt mỏi
+                                            </p>
+                                          </div>
+                                        </div>
+                                      </li>
+                                    </ul>
+                                  </div>
+                                </div>
+                              ))}
+                            </Slider>
+                          </div>
+                        )}
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* 2nd testimonial */}
+                  <div
+                    className="flex flex-col h-full p-6 bg-gray-200"
+                    data-aos="fade-up"
+                    data-aos-delay="400"
+                  >
+                    <div>
+                      <div className="relative inline-flex flex-col mb-4">
+                        <Image
+                          className="rounded-full"
+                          src={TestimonialImage03}
+                          width={48}
+                          height={48}
+                          alt="Testimonial 03"
+                        />
+
+                        <svg
+                          className="absolute top-0 right-0 -mr-3 w-6 h-5 fill-current text-purple-600"
+                          viewBox="0 0 24 20"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path d="M0 13.517c0-2.346.611-4.774 1.833-7.283C3.056 3.726 4.733 1.648 6.865 0L11 2.696C9.726 4.393 8.777 6.109 8.152 7.844c-.624 1.735-.936 3.589-.936 5.56v4.644H0v-4.531zm13 0c0-2.346.611-4.774 1.833-7.283 1.223-2.508 2.9-4.586 5.032-6.234L24 2.696c-1.274 1.697-2.223 3.413-2.848 5.148-.624 1.735-.936 3.589-.936 5.56v4.644H13v-4.531z" />
+                        </svg>
+                      </div>
+                    </div>
+                    <blockquote className="text-lg text-gray-400 grow">
+                      — Chiến dịch lỏ quá trời
+                    </blockquote>
+                    <div className="flex">
+                      <div className="text-gray-700 font-medium mt-6 pt-5 border-t border-gray-700 flex-1">
+                        <button className="text-gray-800 font-semibold rounded items-center mr-4 mb-4 sm:mb-0 flex">
+                          <span className="text-black not-italic">
+                            Tham gia
+                          </span>
+                        </button>
+                      </div>
+
+                      <div
+                        ref={menuRef}
+                        className="flex flex-col sm:flex-row mt-6 pt-5 items-center justify-end"
+                      >
+                        <button
+                          className="text-gray-800 font-semibold rounded items-center mr-4 mb-4 sm:mb-0 flex"
+                          onClick={toggleMenu}
+                        >
+                          <span className="text-black not-italic">
+                            Candidate
+                          </span>
+                          <svg
+                            className="fill-current h-4 w-4 ml-2"
+                            viewBox="0 0 20 20"
+                            xmlns="http://www.w3.org/2000/svg"
+                            style={{ transform: "rotate(90deg)" }}
+                          >
+                            <path d="M8.59 13.41L10 15l6-6-6-6-1.41 1.41L12.17 9H3v2h9.17l-3.58 3.58z" />
+                          </svg>
+                        </button>
+                        {showMenu && (
+                          <div className="absolute right-0 mt-12 w-[330px] rounded-md shadow-lg bg-white">
+                            <Slider {...settings}>
+                              {images.map((image) => (
+                                <div key={image.alt} className="mb-4">
+                                  <div>
+                                    <ul className="divide-y divide-gray-200 dark:divide-gray-700">
+                                      <li className="pt-3 pb-0 sm:pt-4">
+                                        <div className="flex items-center space-x-4">
+                                          <div className="flex-shrink-0">
+                                            <img
+                                              className="w-12 h-12 rounded-full"
+                                              src={image.src}
+                                              alt=""
+                                            />
+                                          </div>
+                                          <div className="flex-1 min-w-0">
+                                            <p className="text-md font-medium text-gray-900 truncate dark:text-gray-400">
+                                              Liêm troller
+                                            </p>
+                                            <p className="text-sm text-gray-500 truncate dark:text-gray-400">
+                                              Côde nữa code mãi code quài code
+                                              dai
+                                              <br />
+                                              code dại code quá chời code kinh
+                                              <br />
+                                              khủng code code mệt mỏi
+                                            </p>
+                                          </div>
+                                        </div>
+                                      </li>
+                                    </ul>
+                                  </div>
+                                </div>
+                              ))}
+                            </Slider>
+                          </div>
+                        )}
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* 3rd testimonial */}
+                  <div
+                    className="flex flex-col h-full p-6 bg-gray-200"
+                    data-aos="fade-up"
+                    data-aos-delay="400"
+                  >
+                    <div>
+                      <div className="relative inline-flex flex-col mb-4">
+                        <Image
+                          className="rounded-full"
+                          src={TestimonialImage03}
+                          width={48}
+                          height={48}
+                          alt="Testimonial 03"
+                        />
+
+                        <svg
+                          className="absolute top-0 right-0 -mr-3 w-6 h-5 fill-current text-purple-600"
+                          viewBox="0 0 24 20"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path d="M0 13.517c0-2.346.611-4.774 1.833-7.283C3.056 3.726 4.733 1.648 6.865 0L11 2.696C9.726 4.393 8.777 6.109 8.152 7.844c-.624 1.735-.936 3.589-.936 5.56v4.644H0v-4.531zm13 0c0-2.346.611-4.774 1.833-7.283 1.223-2.508 2.9-4.586 5.032-6.234L24 2.696c-1.274 1.697-2.223 3.413-2.848 5.148-.624 1.735-.936 3.589-.936 5.56v4.644H13v-4.531z" />
+                        </svg>
+                      </div>
+                    </div>
+                    <blockquote className="text-lg text-gray-400 grow">
+                      — Chiến dịch lỏ quá trời
+                    </blockquote>
+                    <div className="flex">
+                      <div className="text-gray-700 font-medium mt-6 pt-5 border-t border-gray-700 flex-1">
+                        <button className="text-gray-800 font-semibold rounded items-center mr-4 mb-4 sm:mb-0 flex">
+                          <span className="text-black not-italic">
+                            Tham gia
+                          </span>
+                        </button>
+                      </div>
+
+                      <div
+                        ref={menuRef}
+                        className="flex flex-col sm:flex-row mt-6 pt-5 items-center justify-end"
+                      >
+                        <button
+                          className="text-gray-800 font-semibold rounded items-center mr-4 mb-4 sm:mb-0 flex"
+                          onClick={toggleMenu}
+                        >
+                          <span className="text-black not-italic">
+                            Candidate
+                          </span>
+                          <svg
+                            className="fill-current h-4 w-4 ml-2"
+                            viewBox="0 0 20 20"
+                            xmlns="http://www.w3.org/2000/svg"
+                            style={{ transform: "rotate(90deg)" }}
                           >
                             <path d="M8.59 13.41L10 15l6-6-6-6-1.41 1.41L12.17 9H3v2h9.17l-3.58 3.58z" />
                           </svg>

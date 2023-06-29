@@ -47,7 +47,7 @@ export default function MobileMenu() {
       >
         <span className="sr-only">Menu</span>
         <svg
-          className="w-6 h-6 fill-current text-gray-300 hover:text-gray-200 transition duration-150 ease-in-out"
+          className="w-6 h-6 fill-current text-gray-400 hover:text-gray-300 transition duration-150 ease-in-out"
           viewBox="0 0 24 24"
           xmlns="http://www.w3.org/2000/svg"
         >
@@ -61,7 +61,7 @@ export default function MobileMenu() {
       <nav
         id="mobile-nav"
         ref={mobileNav}
-        className="absolute top-full z-20 left-0 w-full px-4 sm:px-6 overflow-hidden transition-all duration-300 ease-in-out"
+        className="absolute top-full z-20 left-1 w-full px-4 sm:px-6 overflow-hidden transition-all duration-300 ease-in-out d-flex mx-auto"
         style={
           mobileNavOpen
             ? { maxHeight: mobileNav.current?.scrollHeight, opacity: 1 }
@@ -69,6 +69,42 @@ export default function MobileMenu() {
         }
       >
         <ul className="bg-gray-800 px-4 py-2">
+          <li>
+            <Link
+              href="#section-1"
+              className="flex font-medium w-full text-purple-600 hover:text-gray-200 py-2 justify-center"
+              onClick={() => setMobileNavOpen(false)}
+            >
+              Chiến dịch
+            </Link>
+          </li>
+          <li>
+            <Link
+              href="#section-2"
+              className="flex font-medium w-full text-purple-600 hover:text-gray-200 py-2 justify-center"
+              onClick={() => setMobileNavOpen(false)}
+            >
+              Giải pháp
+            </Link>
+          </li>
+          <li>
+            <Link
+              href="#section-3"
+              className="flex font-medium w-full text-purple-600 hover:text-gray-200 py-2 justify-center"
+              onClick={() => setMobileNavOpen(false)}
+            >
+              Tính năng
+            </Link>
+          </li>
+          <li>
+            <Link
+              href="#section-4"
+              className="flex font-medium w-full text-purple-600 hover:text-gray-200 py-2 justify-center"
+              onClick={() => setMobileNavOpen(false)}
+            >
+              Hỗ Trơ
+            </Link>
+          </li>
           <li>
             <Link
               href="/signin"

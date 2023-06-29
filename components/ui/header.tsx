@@ -8,35 +8,31 @@ export default function Header() {
     <header
       className="absolute w-full z-30 bg-gray-200 "
       style={{
-        flexGrow: 1,
-        marginBottom: "1rem",
-        marginTop: "1rem",
-        borderRadius: "20px",
-        height: "90px",
-        marginLeft: "2%",
-        width: "96%",
+        position: "fixed",
+        top: 0,
+        left: 0,
+        width: "100%",
+        height: "6.4rem",
       }}
     >
       <div className="max-w-9xl mx-auto px-4 sm:px-6 mt-1">
         <div className="flex items-center justify-between h-20">
           {/* Site branding */}
           <div className="flex items-center">
-            <div className="shrink-0 mr-9 mt-1">
-              <Link href="/" className="block" aria-label="Cruip">
-                <Image
-                  className="max-w-full mx-auto md:max-w-none h-auto"
-                  src={toanhh}
-                  width={200}
-                  height={200}
-                  alt="Features 01"
-                />
-              </Link>
+            <div className="d-flex justify-content-start justify-content-center">
+              <Image
+                className="d-flex justify-content-start max-w-full mx-auto mt-6  md:max-w-none h-auto"
+                src={toanhh}
+                width={250}
+                height={300}
+                alt="Features 01"
+              />
             </div>
             <h2
-              className="h2 mb-2 block text-black text-2xl md:text-3xl lg:text-3xl xl:text-5xl"
+              className="h2 mb-2 block text-black text-3xl md:text-1  xl lg:text-3xl xl:text-1xl mt-4"
               data-aos="fade-up"
             >
-              Hệ thống bình chọn
+              Voting System
             </h2>
           </div>
 
@@ -46,24 +42,32 @@ export default function Header() {
             <ul className="flex grow justify-end flex-wrap items-center">
               <li>
                 <Link
-                  href="http://fpt-voting.surge.sh/authentication/sign-in"
-                  className="btn-sm text-black bg-purple-500 hover:bg-purple-700 ml-3 rounded-full"
+                  href="#section-1"
+                  className="btn-sm text-white bg-green-100 hover:bg-green-900 ml-3 rounded-full"
                 >
                   Chiến dịch
                 </Link>
               </li>
               <li>
                 <Link
-                  href="http://fpt-voting.surge.sh/authentication/sign-in"
-                  className="btn-sm text-black bg-purple-500 hover:bg-purple-700 ml-3 rounded-full"
+                  href="#section-2"
+                  className="btn-sm text-white bg-green-100 hover:bg-green-900 ml-3 rounded-full"
+                >
+                  Giải pháp
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="#section-3"
+                  className="btn-sm text-white bg-green-100 hover:bg-green-900 ml-3 rounded-full"
                 >
                   Tính năng
                 </Link>
               </li>
               <li>
                 <Link
-                  href="http://fpt-voting.surge.sh/authentication/sign-in"
-                  className="btn-sm text-black bg-purple-500 hover:bg-purple-700 ml-3 rounded-full"
+                  href="#section-4"
+                  className="btn-sm text-white bg-green-100 hover:bg-green-900 ml-3 rounded-full"
                 >
                   Hỗ Trợ
                 </Link>
@@ -71,7 +75,7 @@ export default function Header() {
               <li>
                 <Link
                   href="http://fpt-voting.surge.sh/authentication/sign-in"
-                  className="btn-sm text-black bg-purple-500 hover:bg-purple-700 ml-3 rounded-full"
+                  className="btn-sm text-white bg-green-100 hover:bg-green-900 ml-3 rounded-full"
                 >
                   Đăng nhập
                 </Link>
