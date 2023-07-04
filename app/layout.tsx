@@ -31,7 +31,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${inter.variable} ${architects_daughter.variable} font-inter antialiased bg-gray-100 text-gray-200 tracking-tight`}
+        className={`${inter.variable} ${architects_daughter.variable} font-inter antialiased bg-orange-100 text-gray-200 tracking-tight`}
       >
         <div className="flex flex-col min-h-screen overflow-hidden">
           <Header />
