@@ -74,7 +74,7 @@ export default function Header() {
               </li>
               <li>
                 <Link
-                  href="http://fpt-voting.surge.sh/authentication/sign-in"
+                  href="http://voting_system.surge.sh/authentication/sign-in"
                   className="btn-sm text-white bg-green-100 hover:bg-green-900 ml-3 rounded-full"
                 >
                   Đăng nhập
